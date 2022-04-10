@@ -35,7 +35,7 @@ module Download
 
       File.delete(file_path) if File.exist?(file_path)
       File.open(file_path, 'wb') do |file_obj|
-        Kernel.open(*[url,options].compact) do |fin|
+        URI.open(*[url,options].compact) do |fin|
           while (buf = fin.read(8192))
             file_obj << buf
           end
